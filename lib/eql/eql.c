@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-const eql_cmd_def _Move = {"Move", Move, 2};
-const eql_cmd_def _Rotate = {"Rotate", Rotate, 1};
-const eql_cmd_def _Pick = {"Pick", Pick, 0};
+const eql_command_def_t _Move = {"Move", Move, 2};
+const eql_command_def_t _Rotate = {"Rotate", Rotate, 1};
+const eql_command_def_t _Pick = {"Pick", Pick, 0};
 
-eql_action get_action_type(char *def) {
+eql_action_t get_action_type(char *def) {
   if (strcmp(def, _Move.def) == 0) {
     return Move;
   } else if (strcmp(def, _Pick.def) == 0) {
@@ -18,7 +18,7 @@ eql_action get_action_type(char *def) {
   return -1;
 }
 
-void action_to_chars(eql_action action, char *dest) {
+void action_to_chars(eql_action_t action, char *dest) {
   switch (action) {
   case Move:
     strcpy(dest, _Move.def);
@@ -32,10 +32,10 @@ void action_to_chars(eql_action action, char *dest) {
   }
 }
 
-int eql_assemble(eql_tokens *tokens, int size, eql_cmd *commands) {
+int eql_assemble(eql_token_t *tokens, int size, eql_command_t *commands) {
   int count = 0;
   for (int i = 0; i < size; i++) {
-    eql_action action = get_action_type(tokens[i].value);
+    eql_action_t action = get_action_type(tokens[i].value);
     switch (action) {
     case Move:
       commands[count].action = Move;
@@ -61,7 +61,7 @@ int eql_assemble(eql_tokens *tokens, int size, eql_cmd *commands) {
     }
   }
   for (int i = 0; i < count; i++) {
-    eql_cmd cmd = commands[i];
+    eql_command_t cmd = commands[i];
     char action[TOKEN_SIZE];
     action_to_chars(cmd.action, action);
     printf("action:%s x:%d y:%d angle:%d \n", action, cmd.x, cmd.y, cmd.angle);
@@ -69,7 +69,7 @@ int eql_assemble(eql_tokens *tokens, int size, eql_cmd *commands) {
   return count;
 }
 
-int eql_tokenize(char *text, eql_tokens *tokens) {
+int eql_tokenize(char *text, eql_token_t *tokens) {
   int size = (int)strlen(text);
   char token[TOKEN_SIZE];
   int e = 0;
@@ -89,4 +89,4 @@ int eql_tokenize(char *text, eql_tokens *tokens) {
   return y;
 }
 
-void eql_register_func(eql_action action, func_ptr f) { f(3, 43); }
+void eql_register_func(eql_action_t action, func_ptr f) { f(3, 43); }
