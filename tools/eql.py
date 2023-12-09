@@ -1,6 +1,4 @@
-from gc import DEBUG_LEAK
 import os
-from re import DEBUG
 from colorama import Fore
 import colorama
 
@@ -73,7 +71,6 @@ def tokenize_text():
             print_parse_error(tokens[0])
         type = get_token_type(tokens[0])
         token = assemble_command(type, tokens)
-    print_success()
 
 
 def get_token_type(token: str):
@@ -98,34 +95,29 @@ def assemble_command(
             return Token(tokens[0], type)
         case 1:
             if len(tokens) < 2:
-                print_missing_args_error(tokens[0], type.args, len(tokens))
+                return print_missing_args_error(tokens[0], type.args, len(tokens))
             return Token(type.token, type, int(tokens[1]))
         case 2:
             if len(tokens) < 3:
-                print_missing_args_error(tokens[0], type.args, len(tokens))
+                return print_missing_args_error(tokens[0], type.args, len(tokens))
             return Token(type.token, type, int(tokens[1]), int(tokens[2]))
     return Token(tokens[0], type)
 
 
 def print_parse_error(token: str):
-    print(Fore.RED + "Syntax Error : Undefined Keyword")
-    print(Fore.LIGHTYELLOW_EX + " ├─ Line :", DEBUG_LINE)
-    print(Fore.LIGHTYELLOW_EX + " └──── TOKEN :", token.capitalize())
+    print(Fore.RED + "  ╔═════ Syntax Error : Undefined Keyword")
+    print(Fore.LIGHTYELLOW_EX + "  ╠══ Line :", DEBUG_LINE)
+    print(Fore.LIGHTYELLOW_EX + "  ╚══ TOKEN :", token.capitalize())
     os._exit(-1)
 
 
 def print_missing_args_error(token: str, args: int, found: int):
-    print(Fore.RED + "Syntax Error : Missing Argument")
-    print(Fore.LIGHTYELLOW_EX + " ├─ Line :", DEBUG_LINE)
-    print(Fore.LIGHTYELLOW_EX + " ├──── TOKEN :", token.capitalize())
-    print(Fore.LIGHTYELLOW_EX + " ├──────── NEEDED:", args)
-    print(Fore.LIGHTYELLOW_EX + " └──────── FOUND:", found - 1)
-
+    print(Fore.RED + "  ╔═════ Syntax Error : Missing Argument")
+    print(Fore.LIGHTYELLOW_EX + "  ╠══ Line :", DEBUG_LINE)
+    print(Fore.LIGHTYELLOW_EX + "  ╠══ TOKEN :", token.capitalize())
+    print(Fore.LIGHTYELLOW_EX + "  ╠══ NEEDED:", args)
+    print(Fore.LIGHTYELLOW_EX + "  ╚══ FOUND:", found - 1)
     os._exit(-1)
-
-
-def print_success():
-    print(Fore.LIGHTGREEN_EX + "EQL script is valid and has been parsed sucessfully !")
 
 
 if __name__ == "__main__":
