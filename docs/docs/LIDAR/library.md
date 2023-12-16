@@ -35,7 +35,7 @@ void loop() {
 
 To build a new LiDAR instance or service we need to pass on the configuration struct:
 
-**LIDAR::LidarConfig**
+==**LIDAR::LidarConfig**==
 
 | Attribute     | Type           | Description                                                 |
 | ------------- | -------------- | ----------------------------------------------------------- |
@@ -44,7 +44,7 @@ To build a new LiDAR instance or service we need to pass on the configuration st
 | `motor_speed` | int            | motor speed between 120 "slow" and 360 "veryfast"           |
 | `timeout`     | int            | used to skip data acquistion and move to the next operation |
 
-```c++ title="configuration example"
+```c++ title="syntax"
   LIDAR::LidarConfig config =
   {
       .serial = Serial1,
@@ -52,4 +52,21 @@ To build a new LiDAR instance or service we need to pass on the configuration st
       .motor_speed = 120,
       .timeout = 300
   };
+```
+
+### Read a point
+
+function used to read the point: ==**LIDAR::Lidar.getCurrentPoint()**==
+
+==**LIDAR::LidarPoint**==
+
+| Attribute  | Type     | Description                                                      |
+| ---------- | -------- | ---------------------------------------------------------------- |
+| `distance` | float    | distance from lidar to surface in mm                             |
+| `angle`    | float    | relative angle at which the point was detected in degrees        |
+| `quality`  | int      | quality of the point ranges from 1 low quality - 15 high quality |
+| `bool`     | startBit | not implemented                                                  |
+
+```c++ title="syntax"
+  LIDAR::LidarPoint point = lidar.getCurrentPoint();
 ```
