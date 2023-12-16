@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: Espresso
+theme:
+  name: material
+  language: en
+  palette:
+    scheme: slate
+    primary: black
+    accent: deep purple
+  logo: assets/logo.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.tracking
+    - navigation.instant.prefetch
+    - content.code.copy
+
+repo_url: https://github.com/unimakers/espresso
+repo_name: espresso
+extra:
+  homepage: https://unimakers.github.io
+  social:
+    - icon: fontawesome/brands/github
+      link: https://unimakers.github.io
+      name: Unimakers
+  generator: false
+
+copyright: Copyright &copy; 2023 Unimakers Amiens
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - git-committers:
+      enabled: !ENV [CI, false]
+      repository: squidfunk/mkdocs-material
+      branch: main
+  - git-authors
+  - offline
+  - search
