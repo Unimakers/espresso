@@ -51,8 +51,8 @@ markdown_extensions:
 plugins:
   - git-committers:
       enabled: !ENV [CI, false]
-      repository: squidfunk/mkdocs-material
-      branch: main
+      repository: unimakers/espresso
+      branch: master
   - git-authors
   - offline
   - search
