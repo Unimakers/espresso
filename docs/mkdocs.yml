@@ -49,10 +49,6 @@ markdown_extensions:
       custom_checkbox: true
 
 plugins:
-  - git-committers:
-      enabled: !ENV [CI, false]
-      repository: unimakers/espresso
-      branch: master
   - git-authors
   - offline
   - search
