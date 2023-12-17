@@ -4,8 +4,8 @@
 #pragma once
 
 #include "Arduino.h"
-#include "commands.h"
-#include "types.h"
+#include "commands.hpp"
+#include "types.hpp"
 
 namespace lidar {
 

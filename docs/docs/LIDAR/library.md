@@ -5,7 +5,7 @@
 ### Quick Start
 
 ```c++ title="main.cpp"
-#include <lidar.h>
+#include <lidar.hpp>
 
 // declare a new instance of Lidar
 lidar::Lidar Lidar;
