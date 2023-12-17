@@ -1,4 +1,4 @@
-#include <lidar.h>
+#include <lidar.hpp>
 lidar::Lidar Lidar;
 
 void setup() {
