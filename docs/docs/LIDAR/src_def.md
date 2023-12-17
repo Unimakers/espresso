@@ -7,7 +7,7 @@
 #include "commands.h"
 #include "types.h"
 
-namespace LIDAR {
+namespace lidar {
 
 struct LidarPoint {
   float distance;

@@ -8,24 +8,24 @@
 #include <lidar.h>
 
 // declare a new instance of Lidar
-LIDAR::Lidar lidar;
+lidar::Lidar Lidar;
 
 void setup() {
 
   // declare lidar configuration
-  LIDAR::LidarConfig config = {
+  lidar::LidarConfig config = {
       .serial = Serial1, .motor_pin = 19, .motor_speed = 120, .timeout = 300};
 
   // configure our lidar object
-  lidar.setup(config);
+  Lidar.setup(config);
 
   // launch it as a service in the background
-  LIDAR::startService(lidar);
+  lidar::startService(Lidar);
 }
 
 void loop() {
   // receive a point
-  LIDAR::LidarPoint point = lidar.getCurrentPoint();
+  lidar::LidarPoint point = Lidar.getCurrentPoint();
   // process the point
   doSomethingWithThePoint(point);
 }
@@ -35,7 +35,7 @@ void loop() {
 
 To build a new LiDAR instance or service we need to pass on the configuration struct:
 
-==**LIDAR::LidarConfig**==
+==**lidar::LidarConfig**==
 
 | Attribute     | Type           | Description                                                 |
 | ------------- | -------------- | ----------------------------------------------------------- |
@@ -45,7 +45,7 @@ To build a new LiDAR instance or service we need to pass on the configuration st
 | `timeout`     | int            | used to skip data acquistion and move to the next operation |
 
 ```c++ title="syntax"
-  LIDAR::LidarConfig config =
+  lidar::LidarConfig config =
   {
       .serial = Serial1,
       .motor_pin = 19,
@@ -58,7 +58,7 @@ To build a new LiDAR instance or service we need to pass on the configuration st
 
 function used to read the point: ==**LIDAR::Lidar.getCurrentPoint()**==
 
-==**LIDAR::LidarPoint**==
+==**lidar::LidarPoint**==
 
 | Attribute  | Type     | Description                                                      |
 | ---------- | -------- | ---------------------------------------------------------------- |
@@ -68,5 +68,5 @@ function used to read the point: ==**LIDAR::Lidar.getCurrentPoint()**==
 | `bool`     | startBit | not implemented                                                  |
 
 ```c++ title="syntax"
-  LIDAR::LidarPoint point = lidar.getCurrentPoint();
+  lidar::LidarPoint point = Lidar.getCurrentPoint();
 ```

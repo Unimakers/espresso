@@ -16,7 +16,7 @@ This is LiDAR we use at Unimakers club
 ## Cheatsheet - Software
 
 ```c++
-namespace LIDAR {
+namespace lidar {
 
 // starts lidar service
 void startService(Lidar &lidar);
