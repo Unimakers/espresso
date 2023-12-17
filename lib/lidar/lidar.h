@@ -4,7 +4,7 @@
 #include "commands.h"
 #include "types.h"
 
-namespace LIDAR {
+namespace lidar {
 struct LidarPoint {
   float distance;
   float angle;
@@ -78,4 +78,4 @@ class Lidar {
 };
 void startService(Lidar &lidar);
 
-}  // namespace LIDAR
+}  // namespace lidar
