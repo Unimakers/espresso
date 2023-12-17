@@ -1,14 +1,14 @@
-#include <lidar.h>
-LIDAR::Lidar lidar;
+#include <lidar.hpp>
+lidar::Lidar Lidar;
 
 void setup() {
-  LIDAR::LidarConfig config = {
+  lidar::LidarConfig config = {
       .serial = Serial1, .motor_pin = 19, .motor_speed = 120, .timeout = 300};
-  lidar.setup(config);
-  LIDAR::startService(lidar);
+  Lidar.setup(config);
+  lidar::startService(Lidar);
 
   // How to get a point?
-  lidar.getCurrentPoint();
+  Lidar.getCurrentPoint();
 }
 
 void loop() {}

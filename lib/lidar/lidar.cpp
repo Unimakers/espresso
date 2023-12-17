@@ -1,6 +1,6 @@
 #include "lidar.h"
 
-namespace LIDAR {
+namespace lidar {
 void task(void *pvParameters) {
   Lidar *lidar = static_cast<Lidar *>(pvParameters);
   lidar->loop();
@@ -317,4 +317,4 @@ u_result Lidar::_waitResponseHeader(lidar_ans_header_t *header, _u32 timeout) {
   }
   return RESULT_OPERATION_TIMEOUT;
 }
-}  // namespace LIDAR
+}  // namespace lidar

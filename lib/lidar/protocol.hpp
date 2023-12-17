@@ -1,6 +1,6 @@
 #pragma once
 
-#include <types.h>
+#include <types.hpp>
 
 #define LIDAR_CMD_SYNC_BYTE 0xA5
 #define LIDAR_CMDFLAG_HAS_PAYLOAD 0x80
