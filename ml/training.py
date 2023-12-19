@@ -3,6 +3,7 @@ import os
 from PIL import Image
 from skimage.feature import hog
 from skimage import exposure
+import pickle
 
 x: list[int | float] = []
 y: list[str] = []
@@ -87,11 +88,12 @@ fd = hog(
     visualize=True,
     channel_axis=-1,
 )
-import pickle
 
-# save
+
+res = clf.predict([fd[0]])
+print(res)
+
+
+# save model
 with open("model.pkl", "wb") as f:
     pickle.dump(clf, f)
-res = clf.predict([fd[0]])
-
-print(res)
