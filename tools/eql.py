@@ -70,7 +70,7 @@ def tokenize_text():
         if keywords.count(tokens[0]) == 0:
             print_parse_error(tokens[0])
         type = get_token_type(tokens[0])
-        token = assemble_command(type, tokens)
+        token = assemble_command(type, tokens)  # type: ignore
 
 
 def get_token_type(token: str):
