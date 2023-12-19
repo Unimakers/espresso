@@ -6,3 +6,5 @@
 .vscode
 .cache
 docs/site
+
+__pycache__
