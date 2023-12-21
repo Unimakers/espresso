@@ -1,4 +1,4 @@
-#include "lidar.h"
+#include "lidar.hpp"
 
 namespace lidar {
 void task(void *pvParameters) {
@@ -24,7 +24,7 @@ void Lidar::setup(LidarConfig &config) {
   begin(config.serial);
   setLidarSpeed(config.motor_speed);
   setMotorPin(config.motor_pin);
-  startScan(true, config.timeout);
+  startScan(false, config.timeout);
 }
 
 void Lidar::setLidarSpeed(int speed) { _lidar_speed = speed; }
